@@ -1,7 +1,10 @@
 package com.higgsup.java;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.*;
 import java.util.function.Function;
 
 /**
@@ -11,7 +14,7 @@ import java.util.function.Function;
 public class App 
 {
     static String name;
-    public static void main( String[] args ) {
+    public static void main( String[] args ) throws ExecutionException, InterruptedException {
 //        SubStudent subStudent = new SubStudent();
 //        ((Student)subStudent.getClass().newInstance()).printStudent();
 //        System.out.println( "Hello World!" );
@@ -48,6 +51,15 @@ public class App
 //        } catch (Exception e) {
 //
 //        }
+        Callable<String> callable = () -> {
+            System.out.println("Thread name is " + Thread.currentThread().getName());
+            return "fdsfds";
+        };
+
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+        Future<String> future = executor.submit(callable);
+        System.out.println("value - "+ future.get());
+        executor.shutdown();
 
     }
 
