@@ -5,4 +5,9 @@ public class ConcreteAB implements InterfaceA,InterfaceB {
     public void println() {
         System.out.println("print in ConcreteAB...");
     }
+
+    @Override
+    public void test() {
+
+    }
 }
