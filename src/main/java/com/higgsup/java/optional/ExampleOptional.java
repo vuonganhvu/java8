@@ -17,5 +17,8 @@ public class ExampleOptional {
         Student defaultStudent = studentEmpty.orElse(new Student("Higgsup", 5F));
         System.out.println("--------DefaultStudent----");
         System.out.println("DefaultStudent is " + defaultStudent);
+        System.out.println("--------Demo filter----");
+        Optional<Student> filterStudent = student.filter(student1 -> student1.getScore() > 5);
+        System.out.println("Filter student is " + filterStudent);
     }
 }
